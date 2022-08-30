@@ -308,7 +308,7 @@ export function resolveBuildPlugins(config: ResolvedConfig): {
     pre: [
       completeSystemWrapPlugin(),
       ...(options.watch ? [ensureWatchPlugin()] : []),
-      watchPackageDataPlugin(config),
+      ...(config.build.watch ? [watchPackageDataPlugin(config)] : []),
       ...(usePluginCommonjs ? [commonjsPlugin(options.commonjsOptions)] : []),
       dataURIPlugin(),
       assetImportMetaUrlPlugin(config),
